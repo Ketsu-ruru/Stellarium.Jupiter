@@ -1,0 +1,34 @@
+//выставляем дату и время. откуда.
+core.setDate("2025-06-25T12:00:00", "utc");
+core.setObserverLocation(55.7386, 37.6068, "", "Earth");
+core.wait(5)
+
+//настройка.
+LandscapeMgr.setFlagAtmosphere(false);
+LandscapeMgr.setFlagLandscape(false);
+StelMovementMgr.setEquatorialMount(true);
+
+
+//переход к Юпитеру.
+core.selectObjectByName("Jupiter", true);
+core.wait(10);
+StelMovementMgr.autoZoomIn(6);
+core.wait(60);
+
+//приближение к объекту.
+core.selectObjectByName("Callisto", true);
+StelMovementMgr.autoZoomIn(6);
+
+//ускор. времени
+core.setTimeRate(1000);
+
+//пауза.
+core.wait(60); 
+
+//восстановление настроек.
+core.wait(true);
+StelMovementMgr.autoZoomOut();
+LandscapeMgr.setFlagAtmosphere(true);
+LandscapeMgr.setFlagLandscape(true);
+StelMovementMgr.setEquatorialMount(false);
+core.setTimeRate(false);
